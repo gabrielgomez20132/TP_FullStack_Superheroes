@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard de Superhéroes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-500 text-white py-4">
+        <h1 class="text-center text-3xl font-bold">Dashboard de Superhéroes</h1>
+    </header>
+
+    <main class="container mx-auto mt-6">
+        <h2 class="text-xl font-semibold mb-6">Lista de Superhéroes</h2>
+
+        <table class="w-full border-collapse border border-gray-200 bg-white shadow-lg">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Nombre</th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Nombre Real</th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Edad</th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Planeta Origen</th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% superheroes.forEach(function(superheroe) { %>
+                <tr class="hover:bg-gray-100">
+                    <td class="border border-gray-300 px-4 py-2"><%= superheroe.nombreSuperHeroe %></td>
+                    <td class="border border-gray-300 px-4 py-2"><%= superheroe.nombreReal %></td>
+                    <td class="border border-gray-300 px-4 py-2"><%= superheroe.edad %></td>
+                    <td class="border border-gray-300 px-4 py-2"><%= superheroe.planetaOrigen %></td>
+                    <td class="border border-gray-300 px-4 py-2 flex gap-2">
+                        <a href="/heroes/<%= superheroe._id %>/editar" 
+                           class="px-3 py-1 bg-blue-500 text-white text-sm rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            Editar
+                        </a>
+                        
+                        <form action="/heroes/<%= superheroe._id %>?_method=DELETE" method="POST" onsubmit="return confirmarEliminacion();">
+                            <button type="submit" class="border border-black bg-red-500 text-black font-bold py-1 px-2 rounded hover:bg-red-700">
+                                Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </main>
+    <br>
+    <div class="flex justify-center mt-6">
+      <!-- Botón Volver -->
+      <a href="/" 
+         class="bg-gray-300 text-gray-700 py-2 px-4 rounded-md shadow-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300">
+          Volver
+      </a>
+    </div>
+    <footer class="bg-blue-500 text-white py-4 mt-6">
+        <p class="text-center">&copy; Modulo 3 - EJS Layout p1 - by Nodo Tecnologico - 2024</p>
+    </footer>
+
+    <script>
+        // Función para confirmar antes de eliminar
+        function confirmarEliminacion() {
+            return confirm('¿Estás seguro de que deseas eliminar este superhéroe? Esta acción no se puede deshacer.');
+        }
+    </script>
+</body>
+</html>

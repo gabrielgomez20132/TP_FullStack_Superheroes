@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Superhéroe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-500 text-white py-4 mb-6">
+        <h1 class="text-center text-2xl font-bold">Editar Superhéroe</h1>
+    </header>
+
+    <main class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <form action="/heroes/<%= superheroe._id %>/editar" method="POST" class="space-y-6">
+            <!-- Nombre del Superhéroe -->
+            <div>
+                <label for="nombreSuperHeroe" class="block text-sm font-medium text-gray-700">Nombre del Superhéroe:</label>
+                <input type="text" id="nombreSuperHeroe" name="nombreSuperHeroe" value="<%= superheroe.nombreSuperHeroe %>" 
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" 
+                       required>
+            </div>
+
+            <!-- Nombre Real -->
+            <div>
+                <label for="nombreReal" class="block text-sm font-medium text-gray-700">Nombre Real:</label>
+                <input type="text" id="nombreReal" name="nombreReal" value="<%= superheroe.nombreReal %>" 
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" 
+                       required>
+            </div>
+
+            <!-- Edad -->
+            <div>
+                <label for="edad" class="block text-sm font-medium text-gray-700">Edad:</label>
+                <input type="number" id="edad" name="edad" value="<%= superheroe.edad %>" min="0" 
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+            </div>
+
+            <!-- Planeta de Origen -->
+            <div>
+                <label for="planetaOrigen" class="block text-sm font-medium text-gray-700">Planeta de Origen:</label>
+                <input type="text" id="planetaOrigen" name="planetaOrigen" value="<%= superheroe.planetaOrigen %>" 
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+            </div>
+
+            <!-- Debilidad -->
+            <div>
+                <label for="debilidad" class="block text-sm font-medium text-gray-700">Debilidad:</label>
+                <input type="text" id="debilidad" name="debilidad" value="<%= superheroe.debilidad %>" 
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+            </div>
+
+            <!-- Poderes -->
+            <div>
+                <label for="poderes" class="block text-sm font-medium text-gray-700">Poderes:</label>
+                <input type="text" id="poderes" name="poderes" value="<%= superheroe.poderes.join(', ') %>" 
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+            </div>
+
+            <!-- Aliados -->
+            <div>
+                <label for="aliados" class="block text-sm font-medium text-gray-700">Aliados:</label>
+                <input type="text" id="aliados" name="aliados" value="<%= superheroe.aliados.join(', ') %>" 
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+            </div>
+
+            <!-- Enemigos -->
+            <div>
+                <label for="enemigos" class="block text-sm font-medium text-gray-700">Enemigos:</label>
+                <input type="text" id="enemigos" name="enemigos" value="<%= superheroe.enemigos.join(', ') %>" 
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+            </div>
+
+            <!-- Botón de Guardar -->
+            <div class="flex justify-end">
+                <button type="submit" 
+                        class="px-6 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    Guardar Cambios
+                </button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
